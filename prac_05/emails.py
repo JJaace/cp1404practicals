@@ -7,12 +7,6 @@ Actual: 1 hour 20 minutes
 """
 
 
-def get_name(email):
-    split = email.split('@')[0].split('.')
-    format_name = " ".join(name.title() for name in split)
-    return format_name
-
-
 def main():
     user_data = {}
 
@@ -32,6 +26,13 @@ def main():
 
     for email, name in user_data.items():
         print(f"{name} ({email})")
+
+
+def get_name(email):
+    """Grabs the name from email"""
+    split = email.split('@')[0].split('.')
+    format_name = " ".join(name.title() for name in split)
+    return format_name
 
 
 main()
