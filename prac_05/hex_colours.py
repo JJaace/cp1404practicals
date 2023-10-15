@@ -1,5 +1,5 @@
-COLOUR_DICTIONARY = {"Absolutezero": "#0048ba", "Acidgreen": "#b0bf1a", "Amber": "#ffbf00", "Amethyst": "#9966cc",
-                     "Aqua": "#00ffff", "Ashgrey": "#b2beb5", "Beaver": "#9f8170", "Beige": "#f5f5dc",
+COLOUR_DICTIONARY = {"Absolute Zero": "#0048ba", "Acid Green": "#b0bf1a", "Amber": "#ffbf00", "Amethyst": "#9966cc",
+                     "Aqua": "#00ffff", "Ash Grey": "#b2beb5", "Beaver": "#9f8170", "Beige": "#f5f5dc",
                      "Bistre": "#3d2b1f",
                      "Blond": "#faf0be"}
 
