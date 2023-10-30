@@ -1,32 +1,36 @@
+"""
+Estimate: 1 hour
+Actual: 2 hours"""
+
 from prac_06.guitar import Guitar
+
+
+def get_valid_input(prompt, data_type, error_message="Invalid input. Please enter a valid value."):
+    while True:
+        try:
+            user_input = data_type(input(prompt))
+            if user_input < 0:
+                print("Invalid.")
+                continue
+            return user_input
+        except ValueError:
+            print(error_message)
 
 
 def main():
     print("My Guitars!")
 
     guitars = []
-    guitar_number = 1
 
     name = input("Name: ")
 
     while name != "":
-        try:
-            year = int(input("Year: "))
-            cost = float(input("Cost: $"))
-        except ValueError:
-            print("Invalid input. Please enter a valid year and cost.")
-            name = input("Name: ")
-            continue
-
-        if year < 0 or cost < 0:
-            print("Year and cost must be non-negative.")
-            name = input("Name: ")
-            continue
+        year = get_valid_input("Year: ", int, "Invalid year. Please enter a valid year.")
+        cost = get_valid_input("Cost: $", float, "Invalid cost. Please enter a valid cost.")
 
         guitar = Guitar(name, year, cost)
         guitars.append(guitar)
         print(guitar)
-        guitar_number += 1
 
         name = input("Name: ")
 
