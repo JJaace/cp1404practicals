@@ -33,7 +33,12 @@ while user_input != "Q":
     elif user_input == "F":
         print("Filter")
     elif user_input == "A":
-        print("Add")
+        project_name = input("Enter the project name:")
+        start_date = input("Enter the start date (DD/MM/YYYY): ")
+        priority = int(input("Enter the priority: "))
+        cost_estimate = float(input("Enter the cost estimate: "))
+        completion_percentage = int(input("Enter the completion percentage: "))
+        Project.add_new_project(projects, project_name, start_date, priority, cost_estimate, completion_percentage)
     elif user_input == "U":
         print("Update")
     elif user_input != "Q":

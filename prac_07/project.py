@@ -41,3 +41,8 @@ class Project:
             print(
                 f"  {project.name}, start: {project.start_date}, priority {project.priority}"
                 f", estimate: ${project.cost_estimate:.2f}, completion: {project.completion_percentage}%")
+
+    def add_new_project(self, name, start_date, priority, cost_estimate, completion_percentage):
+        new_project = Project(name, start_date, priority, cost_estimate, completion_percentage)
+        self.append(new_project)
+        print(f"{new_project} Added")
