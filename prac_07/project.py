@@ -23,3 +23,21 @@ class Project:
         except FileNotFoundError:
             print(f"{self} not found.")
         return projects
+
+    def display_projects(self):
+        incomplete = sorted([project for project in self if project.completion_percentage < 100],
+                            key=lambda p: p.priority)
+        completed = sorted([project for project in self if project.completion_percentage == 100],
+                           key=lambda p: p.priority)
+
+        print("Incomplete projects:")
+        for project in incomplete:
+            print(
+                f"  {project.name}, start: {project.start_date}, priority {project.priority}"
+                f", estimate: ${project.cost_estimate:.2f}, completion: {project.completion_percentage}%")
+
+        print("Completed projects:")
+        for project in completed:
+            print(
+                f"  {project.name}, start: {project.start_date}, priority {project.priority}"
+                f", estimate: ${project.cost_estimate:.2f}, completion: {project.completion_percentage}%")

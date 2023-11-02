@@ -2,11 +2,11 @@
 
 """Priority Queue
 1 - Load projects
-2 - Save Projects
-3 - Display projects
-4 - Add new project
-5 - filter project by date
-6 - Update project"""
+2 - Display projects
+3 - Add new project
+4 - filter project by date
+5 - Update project
+6 - Save Projects"""
 
 from prac_07.project import Project
 
@@ -29,7 +29,7 @@ while user_input != "Q":
     elif user_input == "S":
         print("Save")
     elif user_input == "D":
-        print("Display")
+        Project.display_projects(projects)
     elif user_input == "F":
         print("Filter")
     elif user_input == "A":
