@@ -46,3 +46,14 @@ class Project:
         new_project = Project(name, start_date, priority, cost_estimate, completion_percentage)
         self.append(new_project)
         print(f"{new_project} Added")
+
+    def save_file(self, projects):
+        if self == "":
+            print("No file found, please load file")
+        else:
+            with open(self, 'w') as file:
+                header = "Name\tStart Date\tPriority\tCost Estimate\tCompletion Percentage\n"
+                file.write(header)
+                for project in projects:
+                    file.write(str(project) + '\n')
+                print(f"{len(projects)} projects has been saved to '{self}'")
