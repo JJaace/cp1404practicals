@@ -43,7 +43,7 @@ def main():
             completion_percentage = int(input("Enter the completion percentage: "))
             Project.add_new_project(projects, project_name, start_date, priority, cost_estimate, completion_percentage)
         elif user_input == "U":
-            print("Update")
+            Project.update_project(projects)
         elif user_input != "Q":
             print("Invalid Input")
 

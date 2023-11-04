@@ -25,22 +25,25 @@ class Project:
         return projects
 
     def display_projects(self):
-        incomplete = sorted([project for project in self if project.completion_percentage < 100],
-                            key=lambda p: p.priority)
-        completed = sorted([project for project in self if project.completion_percentage == 100],
-                           key=lambda p: p.priority)
+        if not self:
+            print("No file found, please load file")
+        else:
+            incomplete = sorted([project for project in self if project.completion_percentage < 100],
+                                key=lambda p: p.priority)
+            completed = sorted([project for project in self if project.completion_percentage == 100],
+                               key=lambda p: p.priority)
 
-        print("Incomplete projects:")
-        for project in incomplete:
-            print(
-                f"  {project.name}, start: {project.start_date}, priority {project.priority}"
-                f", estimate: ${project.cost_estimate:.2f}, completion: {project.completion_percentage}%")
+            print("Incomplete projects:")
+            for i, project in enumerate(incomplete):
+                print(
+                    f"{i} {project.name}, start: {project.start_date}, priority {project.priority}"
+                    f", estimate: ${project.cost_estimate:.2f}, completion: {project.completion_percentage}%")
 
-        print("Completed projects:")
-        for project in completed:
-            print(
-                f"  {project.name}, start: {project.start_date}, priority {project.priority}"
-                f", estimate: ${project.cost_estimate:.2f}, completion: {project.completion_percentage}%")
+            print("Completed projects:")
+            for i, project in enumerate(completed):
+                print(
+                    f"{i} {project.name}, start: {project.start_date}, priority {project.priority}"
+                    f", estimate: ${project.cost_estimate:.2f}, completion: {project.completion_percentage}%")
 
     def add_new_project(self, name, start_date, priority, cost_estimate, completion_percentage):
         new_project = Project(name, start_date, priority, cost_estimate, completion_percentage)
@@ -48,7 +51,7 @@ class Project:
         print(f"{new_project} Added")
 
     def save_file(self, projects):
-        if self == "":
+        if not self:
             print("No file found, please load file")
         else:
             with open(self, 'w') as file:
@@ -57,3 +60,39 @@ class Project:
                 for project in projects:
                     file.write(str(project) + '\n')
                 print(f"{len(projects)} projects has been saved to '{self}'")
+
+    def update_project_display(self):
+        projects = sorted([project for project in self if project.completion_percentage < 100],
+                          key=lambda p: p.priority)
+
+        for i, project in enumerate(projects):
+            print(
+                f"{i} {project.name}, start: {project.start_date}, priority {project.priority}"
+                f", estimate: ${project.cost_estimate:.2f}, completion: {project.completion_percentage}%")
+
+    def update_project(self):
+        Project.update_project_display(self)
+        try:
+            project_choice = int(input("Project choice: "))
+        except ValueError:
+            print("Enter valid project number")
+
+        try:
+            project_choice = int(project_choice)
+            if 0 <= project_choice < len(self):
+                project = self[project_choice]
+                print(project)
+
+                new_completion = input("New Percentage: ")
+                if new_completion:
+                    project.completion_percentage = int(new_completion)
+
+                new_priority = input("New Priority: ")
+                if new_priority:
+                    project.priority = int(new_priority)
+
+                print("Project updated")
+            else:
+                print("Please select a valid project number.")
+        except ValueError:
+            print("Please enter a valid project number.")
