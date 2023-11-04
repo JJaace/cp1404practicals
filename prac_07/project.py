@@ -71,28 +71,31 @@ class Project:
                 f", estimate: ${project.cost_estimate:.2f}, completion: {project.completion_percentage}%")
 
     def update_project(self):
-        Project.update_project_display(self)
-        try:
-            project_choice = int(input("Project choice: "))
-        except ValueError:
-            print("Enter valid project number")
+        if not self:
+            print("No file found, please load file")
+        else:
+            Project.update_project_display(self)
+            try:
+                project_choice = int(input("Project choice: "))
+            except ValueError:
+                print("Enter valid project number")
 
-        try:
-            project_choice = int(project_choice)
-            if 0 <= project_choice < len(self):
-                project = self[project_choice]
-                print(project)
+            try:
+                project_choice = int(project_choice)
+                if 0 <= project_choice < len(self):
+                    project = self[project_choice]
+                    print(project)
 
-                new_completion = input("New Percentage: ")
-                if new_completion:
-                    project.completion_percentage = int(new_completion)
+                    new_completion = input("New Percentage: ")
+                    if new_completion:
+                        project.completion_percentage = int(new_completion)
 
-                new_priority = input("New Priority: ")
-                if new_priority:
-                    project.priority = int(new_priority)
+                    new_priority = input("New Priority: ")
+                    if new_priority:
+                        project.priority = int(new_priority)
 
-                print("Project updated")
-            else:
-                print("Please select a valid project number.")
-        except ValueError:
-            print("Please enter a valid project number.")
+                    print("Project updated")
+                else:
+                    print("Please select a valid project number.")
+            except ValueError:
+                print("Please enter a valid project number.")
