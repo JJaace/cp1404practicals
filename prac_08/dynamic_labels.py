@@ -4,7 +4,7 @@ from kivy.uix.label import Label
 from kivy.properties import StringProperty
 
 
-class DynamicWidgets(App):
+class DynamicLabels(App):
     status_text = StringProperty("")
 
     def __init__(self, **kwargs):
@@ -16,19 +16,14 @@ class DynamicWidgets(App):
         """Build the Kivy GUI."""
         self.title = "Dynamic Labels"
         self.root = Builder.load_file('dynamic_labels.kv')
+        self.create_widget()
         return self.root
 
     def create_widget(self):
-        """Create buttons from data and add them to the GUI."""
+        """Create labels from data and add them to the GUI."""
         for name in self.names:
             temp_label = Label(text=name)
-            temp_label.bind(on_press=self.press_entry)
             self.root.ids.entries_box.add_widget(temp_label)
 
-    def press_entry(self, instance):
-        """Handle pressing entry buttons."""
-        name = instance.text
-        self.status_text = f"Hello {name}"
 
-
-DynamicWidgets().run()
+DynamicLabels().run()
