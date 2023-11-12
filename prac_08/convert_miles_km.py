@@ -1,3 +1,6 @@
+"""Estimate: 1 hour 30 mins
+    Actual: 1 hour
+"""
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.core.window import Window
