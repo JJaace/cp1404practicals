@@ -1,3 +1,7 @@
+"""Estimate: 1 hour
+    Actual: 1 hour 30 minutes
+"""
+
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.label import Label
@@ -5,6 +9,7 @@ from kivy.properties import StringProperty
 
 
 class DynamicLabels(App):
+    """DynamicLabels is a Kivy app that creates a label for each name from a list of names"""
     status_text = StringProperty("")
 
     def __init__(self, **kwargs):
