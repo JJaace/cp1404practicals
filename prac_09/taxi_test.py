@@ -3,7 +3,7 @@
 
 from prac_09.taxi import Taxi
 
-my_taxi = Taxi(100, "prius 1", 1.23)
+my_taxi = Taxi(100, "prius 1")
 my_taxi.drive(40)
 print(f"Taxi drove 40 km:"
       f"\n{my_taxi}"
