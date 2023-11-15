@@ -5,6 +5,7 @@ from prac_09.silver_service_taxi import SilverServiceTaxi
 
 
 def main():
+    """Main program"""
     silver_service_taxi = SilverServiceTaxi("Taxi 1", 100, 2)
     silver_service_taxi.drive(18)
     print(silver_service_taxi)
