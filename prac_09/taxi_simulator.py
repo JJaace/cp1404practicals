@@ -34,6 +34,7 @@ def main():
                 print(f"Bill to date: ${bill_to_date:.2f}")
             except (ValueError, IndexError):
                 print("Invalid taxi choice")
+                print(f"Bill to date: ${bill_to_date:.2f}")
         elif user_input == 'd':
             if current_taxi is None:
                 print("You need to choose a taxi before you can drive")
@@ -45,11 +46,12 @@ def main():
                 print(f"Your {current_taxi.name} trip cost you ${cost:.2f}")
                 bill_to_date += cost
                 print(f"Bill to date: ${bill_to_date:.2f}")
+        else:
+            print("Invalid option")
+            print(f"Bill to date: ${bill_to_date:.2f}")
 
     print(f"Total trip cost: ${bill_to_date:.2f}")
     print("Taxis are now:")
     display_taxis(taxis)
 
-
-if __name__ == "__main__":
-    main()
+main()
